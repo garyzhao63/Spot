@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 
-export default class MenuExampleHeader extends Component {
+export default class Navbar extends Component {
   state = {};
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -11,16 +11,16 @@ export default class MenuExampleHeader extends Component {
 
     return (
       <Menu>
-        <Menu.Item header>Our Company</Menu.Item>
+        <Menu.Item header>Spot</Menu.Item>
         <Menu.Item
-          name='aboutUs'
-          active={activeItem === 'aboutUs'}
+          name='find'
+          active={activeItem === 'find'}
           onClick={this.handleItemClick}
         />
-        <Menu.Item name='jobs' active={activeItem === 'jobs'} onClick={this.handleItemClick} />
+        <Menu.Item name='post' active={activeItem === 'post'} onClick={this.handleItemClick} />
         <Menu.Item
-          name='locations'
-          active={activeItem === 'locations'}
+          name='account'
+          active={activeItem === 'account'}
           onClick={this.handleItemClick}
         />
       </Menu>
