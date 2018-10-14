@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
-import 'semantic-ui-css/semantic.min.css';
+import {BrowserRouter} from 'react-router-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import './css/index.css';
+import 'semantic-ui-css/semantic.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
