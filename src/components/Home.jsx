@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
+import * as db from '../server/api';
 
 export default class Home extends Component {
   state = {};
@@ -13,9 +14,12 @@ export default class Home extends Component {
           </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => db.getListing("Listing1", (data, error) => {
+            if (error) alert(error);
+            else alert(data.user);
+          })} 
         >
           Learn React
           </a>

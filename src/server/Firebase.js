@@ -13,16 +13,13 @@ var firebase = require("firebase");
 
 
     // Get a reference to the database service
-const database = firebase.database();
+export const database = firebase.database();
 
 export function test() {
     //console.log("hello");
     //console.log(database.ref().push({location: "123"}));
 }
 
-const auth = firebase.auth();
-const db = firebase.firestore();
-const storage = firebase.storage();
- 
- 
-export default database;
+export const auth = firebase.auth();
+export const db = firebase.firestore();
+export const storage = firebase.storage();
