@@ -9,7 +9,13 @@ export default class NotificationsContainer extends Component {
         <h1>
           Check your notifications!
         </h1>
-      </div>
+        <button class='ui blue button' role='button'>
+          Confirm
+        </button>
+        <button class='ui red button' role='button' color='red'>
+          Reject
+        </button>
+    </div>
     );
   }
 }

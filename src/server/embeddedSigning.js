@@ -128,7 +128,7 @@ app.get('/', function (req, res) {
     //If a clientUserId was not specified, leave it out.
     let recipientViewRequest = new docusign.RecipientViewRequest();
     recipientViewRequest.authenticationMethod = 'email';
-    recipientViewRequest.clientUserId = '123';
+    recipientViewRequest.clientUserId = user.uid;
     recipientViewRequest.recipientId = '1';
     recipientViewRequest.returnUrl = 'http://localhost:3000/dsreturn';
     recipientViewRequest.userName = recipientName;

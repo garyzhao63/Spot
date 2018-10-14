@@ -8,7 +8,7 @@ import {LoginButton} from './Login';
 
 export default class Header extends Component {
   render() {
-    const {ACCOUNT, FIND, POST} = navConsts;
+    const {ACCOUNT, FIND, POST, NOTIFICATIONS} = navConsts;
     const activeItem = createBrowserHistory().location.pathname.replace('/', '');
 
     return (
@@ -35,6 +35,13 @@ export default class Header extends Component {
             <Menu.Item
               name={ACCOUNT}
               active={activeItem === ACCOUNT}
+              onClick={this.handleItemClick}
+            />
+          </Link>
+          <Link to={'/' + NOTIFICATIONS}>
+            <Menu.Item
+              name={NOTIFICATIONS}
+              active={activeItem === NOTIFICATIONS}
               onClick={this.handleItemClick}
             />
           </Link>
