@@ -98,13 +98,13 @@ export function getLocation(name, callback) {
         .catch((error) => callback(null, error));
 }
 
-export function getOwnerIDname, callback) {
+export function getOwnerIDname(name, callback) {
     listingRef.doc(name).get()
         .then((listing) => callback(listing.data().ownerID, null))
         .catch((error) => callback(null, error));
 }
 
-export function getPicture, callback) {
+export function getPicture(name, callback) {
     listingRef.doc(name).get()
         .then((listing) => callback(listing.data().picture, null))
         .catch((error) => callback(null, error));
