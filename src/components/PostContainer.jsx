@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import { Icon } from 'semantic-ui-react';
 
 export default class PostContainer extends Component {
   state = {};
@@ -7,7 +7,7 @@ export default class PostContainer extends Component {
   render() {
     return (
       <div>
-        <img src={logo} className="App-logo" alt="logo" />
+        <Icon name='car' size='massive' />
         <h1>
           Post a parking spot!
         </h1>
