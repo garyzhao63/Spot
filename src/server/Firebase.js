@@ -20,9 +20,10 @@ export function test() {
     //console.log(database.ref().push({location: "123"}));
 }
 
-const auth = firebase.auth();
+export const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
-
-
+export const provider = firebase.auth.GoogleAuthProvider;
+ 
+ 
 export default database;
