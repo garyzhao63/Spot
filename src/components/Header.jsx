@@ -8,7 +8,7 @@ import {isUserLoggedIn} from '../server/api';
 
 export default class Header extends Component {
   render() {
-    const {ACCOUNT, FIND, POST} = navConsts;
+    const {ACCOUNT, FIND, POST, MAP} = navConsts;
     const activeItem = createBrowserHistory().location.pathname.replace('/', '');
 
     return (
