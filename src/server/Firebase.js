@@ -1,4 +1,4 @@
-var firebase = require("firebase");
+export const firebase = require("firebase");
 
 // Initialize Firebase
 var config = {
