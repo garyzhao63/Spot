@@ -6,12 +6,12 @@ export default class PostContainer extends Component {
 
   render() {
     return (
-      <header className="App-container">
+      <div>
         <img src={logo} className="App-logo" alt="logo" />
         <h1>
           Post a parking spot!
         </h1>
-      </header>
+      </div>
     );
   }
 }

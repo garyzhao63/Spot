@@ -6,12 +6,12 @@ export default class AccountContainer extends Component {
 
   render() {
     return (
-      <header className="App-container">
+      <div>
         <img src={logo} className="App-logo" alt="logo" />
         <h1>
           Manage your account!
         </h1>
-      </header>
+      </div>
     );
   }
 }

@@ -10,7 +10,7 @@ export default class Main extends Component {
 
   render() {
     return (
-      <main>
+      <main className="App-container">
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/find' component={FindContainer} />

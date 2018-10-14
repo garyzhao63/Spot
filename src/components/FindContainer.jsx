@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Icon} from 'semantic-ui-react';
 import logo from '../logo.svg';
 
 export default class FindContainer extends Component {
@@ -6,12 +7,12 @@ export default class FindContainer extends Component {
 
   render() {
     return (
-      <header className="App-container">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div>
+        <Icon name='car' size='massive' />
         <h1>
           Find a parking spot!
         </h1>
-      </header>
+      </div>
     );
   }
 }

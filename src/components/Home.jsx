@@ -6,7 +6,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <header className="App-container">
+      <div>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -19,7 +19,7 @@ export default class Home extends Component {
         >
           Learn React
           </a>
-      </header>
+      </div>
     );
   }
 }
