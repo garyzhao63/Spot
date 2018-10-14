@@ -4,6 +4,7 @@ import {Menu} from 'semantic-ui-react';
 import {Icon} from 'semantic-ui-react';
 import {createBrowserHistory} from 'history';
 import {navConsts} from '../constants';
+import {LoginButton} from './Login';
 
 export default class Header extends Component {
   render() {

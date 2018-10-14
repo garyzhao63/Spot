@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import GoogleLogin from 'react-google-login';
-import {firebase} from '../server/Firebase';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react';
+import {login} from '../server/api';
 
 export class LoginButton extends Component {
 
@@ -12,22 +11,23 @@ export class LoginButton extends Component {
     //    });
     //}
 
-    testFunction() {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    // testFunction() {
+    //     const provider = new firebase.auth.GoogleAuthProvider();
 
-        console.log('provider');      
-        console.log(provider);   
-   
-        auth.signInWithPopup(provider).then((result) => {
-            console.log(result);
-        });   
-    }
+    //     console.log('provider');
+    //     console.log(provider);
+
+    //     auth.signInWithPopup(provider).then((result) => {
+    //         console.log(result);
+    //     });
+    // }
 
     render() {
         return(
             <React.Fragment>
-                <Button onClick={this.testFunction}>
-                Chester bad
+                <Button onClick={login}>
+                <Icon name='google' />
+                Log In with Google
                 </Button>
             </React.Fragment>
         );

@@ -7,10 +7,7 @@
     "@babel/runtime": "^7.1.2",
     "babel-loader": "^8.0.4",
     "firebase": "^5.5.4",
-<<<<<<< Updated upstream
     "history": "^4.7.2",
-=======
->>>>>>> Stashed changes
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-google-login": "^3.2.1",
