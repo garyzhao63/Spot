@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import marker from '../marker.png';
+import * as api from '../server/api';
  
 const AnyReactComponent = ({ text }) => <div><img src={marker} width='20' />{text}</div>;
  
 class MapContainer extends Component {
+
   static defaultProps = {
     center: {
       lat: 32.8801,
@@ -12,8 +14,20 @@ class MapContainer extends Component {
     },
     zoom: 11
   };
+
+  componentDidMount() {
+    api.getAllListings((listingData, error) => {
+      if (error) {
+        alert(error);
+        return;
+      }
+      console.log(listingData);
+    })
+  }
+
  
   render() {
+
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
@@ -22,6 +36,8 @@ class MapContainer extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
+
+
           <AnyReactComponent
             lat={32.8801}
             lng={-117.2340}
