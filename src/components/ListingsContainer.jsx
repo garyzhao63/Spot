@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
-import {Image} from 'semantic-ui-react';
+import {Button, Icon, Image} from 'semantic-ui-react';
 import {ListingCard} from './ListingCard';
 
 export default class ListingsContainer extends Component {
   render() {
     const imgPlaceholder = 'https://react.semantic-ui.com/images/wireframe/image.png';
     const descriptionPlaceholder = <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />;
+
+    const requestButton = (
+      <Button primary floated='right'>
+        Request
+        <Icon name='right chevron' />
+      </Button>
+    );
 
     return (
       this.props.listings.map((listing) => (
@@ -18,6 +25,7 @@ export default class ListingsContainer extends Component {
             : imgPlaceholder
           }
           description={listing.description ? listing.description : descriptionPlaceholder}
+          extra={requestButton}
         />
       ))
     );

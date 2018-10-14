@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Segment, Container, Form, Icon, Input, Label} from 'semantic-ui-react';
 import * as api from '../server/api';
 import {firebase} from '../server/Firebase';
+import LocationSearchBar from './LocationSearchBar';
 
 export default class PostContainer extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ export default class PostContainer extends Component {
       description: '',
       latitude: null,
       longitude: null,
+      locationLoading: false,
+      locationError: false,
     }
   }
 
@@ -21,6 +24,7 @@ export default class PostContainer extends Component {
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
+          locationLoading: false,
         });
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
@@ -39,10 +43,16 @@ export default class PostContainer extends Component {
             alert("An unknown error occurred.");
             break;
         }
+        this.setState({locationError: true});
       });
     } else {
       alert("Geolocation is not supported by this browser.");
+      this.setState({locationError: true});
     }
+  }
+
+  handleLocationFind = (latitude, longitude) => {
+    this.setState({latitude, longitude});
   }
 
   handleSubmit = () => {
@@ -62,7 +72,7 @@ export default class PostContainer extends Component {
           description: '',
           latitude: null,
           longitude: null,
-        })
+        });
       }
     });
   }
@@ -75,10 +85,8 @@ export default class PostContainer extends Component {
           Post a parking spot!
         </h1>
 
-        {this.getLocation()}
-
         <Segment inverted>
-        <Form inverted onSubmit={this.handleSubmit}>
+        <Form inverted onSubmit={this.handleSubmit} loading={this.state.locationLoading && !this.state.locationError}>
           <Form.Group>
             <Form.Input
               required
@@ -96,15 +104,24 @@ export default class PostContainer extends Component {
               value={this.state.price}
               width='1'
             />
+            <Form.Input label='Search Location'><LocationSearchBar onLocationFind={this.handleLocationFind} /></Form.Input>
+            <h3>OR</h3>
+            <Form.Button
+              label='Get Current Location'
+              content={<Icon name='location arrow' />}
+              type='button'
+              onClick={() => this.setState({locationLoading: true}, this.getLocation)}
+              color={(this.state.latitude && this.state.latitude) ? 'green'
+                : this.state.locationError ? 'red'
+                : 'grey'} />
           </Form.Group>
           <Form.TextArea
-            required
             label='Description'
             placeholder='Describe the spot.'
             onChange={(e, data) => this.setState({description: data.value})}
             value={this.state.description}
           />
-          <Form.Button content='Submit' />
+          <Form.Button type='submit' content='Submit' />
         </Form>
         </Segment>
 
