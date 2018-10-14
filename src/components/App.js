@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../css/App.css';
 import MenuHeaderExample from './Navbar';
-import {addListing} from '../server/Firebase';
 
 class App extends Component {
   render() {
@@ -16,9 +15,9 @@ class App extends Component {
           </p>
           <a
             className="App-link"
+            href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={addListing}
           >
             Learn React
           </a>
