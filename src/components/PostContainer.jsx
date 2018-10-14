@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Segment, Container, Form, Icon, Input, Label} from 'semantic-ui-react';
 import * as api from '../server/api';
-import {firebase} from '../server/Firebase';
+import {firebase, auth} from '../server/Firebase';
 import LocationSearchBar from './LocationSearchBar';
 
 export default class PostContainer extends Component {
@@ -56,23 +56,35 @@ export default class PostContainer extends Component {
   }
 
   handleSubmit = () => {
-    const {title, price, description, latitude, longitude} = this.state;
-    let location = null;
-    if (latitude && longitude) {
-      location = new firebase.firestore.GeoPoint(latitude, longitude);
-    }
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        // ...
+        const {title, price, description, latitude, longitude} = this.state;
+        let location = null;
+        if (latitude && longitude) {
+          location = new firebase.firestore.GeoPoint(latitude, longitude);
+        }
 
-    api.addListing(this.state.title, {title, price, description, location, latitude, longitude}, (error) => {
-      if (error) {
-        alert(error);
-      } else {
-        this.setState({
-          title: '',
-          price: '',
-          description: '',
-          latitude: null,
-          longitude: null,
+        api.addListing(this.state.title, {title, price, description, location, latitude, longitude, email, userName: displayName}, (error) => {
+          if (error) {
+            alert(error);
+          } else {
+            this.setState({
+              title: '',
+              price: '',
+              description: '',
+              latitude: null,
+              longitude: null,
+            });
+          }
         });
+      } else {
+        // User is signed out.
+        // ...
+        alert("You must sign in to post")
       }
     });
   }

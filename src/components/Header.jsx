@@ -45,7 +45,7 @@ export default class Header extends Component {
               onClick={this.handleItemClick}
             />
           </Link>
-          {isUserLoggedIn() ? <LoginButton /> : <Button className='login-button' content='Log out' />}
+          {!isUserLoggedIn() ? <LoginButton /> : <Button className='login-button' content='Log out' />}
         </Menu>
       </div>
     );

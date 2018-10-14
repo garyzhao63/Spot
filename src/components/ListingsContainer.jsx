@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import {Button, Icon, Image} from 'semantic-ui-react';
 import {ListingCard} from './ListingCard';
+import * as networking from '../networking';
 
 export default class ListingsContainer extends Component {
+  requestButton = (listing) => (
+    <Button primary floated='right' onClick={() => networking.requestDocuSign(listing.email, listing.userName, listing.title, (response, error) => {})}>
+      Request
+          <Icon name='right chevron' />
+    </Button>
+  );
+
   render() {
     const imgPlaceholder = 'https://react.semantic-ui.com/images/wireframe/image.png';
     const descriptionPlaceholder = <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />;
-
-    const requestButton = (
-      <Button primary floated='right'>
-        Request
-        <Icon name='right chevron' />
-      </Button>
-    );
 
     return (
       this.props.listings.map((listing) => (
@@ -25,7 +26,7 @@ export default class ListingsContainer extends Component {
             : imgPlaceholder
           }
           description={listing.description ? listing.description : descriptionPlaceholder}
-          extra={requestButton}
+          extra={this.requestButton(listing)}
         />
       ))
     );
