@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Icon, Menu} from 'semantic-ui-react';
+import {Icon, Menu} from 'semantic-ui-react';
 import {createBrowserHistory} from 'history';
 import {navConsts} from '../constants';
 import {LoginButton} from './Login';
+import {LogoutButton} from './Logout';
 import {isUserLoggedIn} from '../server/api';
 
 export default class Header extends Component {
@@ -45,7 +46,7 @@ export default class Header extends Component {
               onClick={this.handleItemClick}
             />
           </Link>
-          {!isUserLoggedIn() ? <LoginButton /> : <Button className='login-button' content='Log out' />}
+          {!isUserLoggedIn() ? <LoginButton /> : <LogoutButton />}
         </Menu>
       </div>
     );
