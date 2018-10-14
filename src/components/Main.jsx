@@ -5,10 +5,11 @@ import {navConsts} from '../constants';
 import FindContainer from './FindContainer';
 import PostContainer from './PostContainer';
 import AccountContainer from './AccountContainer';
+import MapContainer from './MapContainer';
 
 export default class Main extends Component {
   render() {
-    const {ACCOUNT, FIND, POST} = navConsts;
+    const {ACCOUNT, FIND, POST, MAP} = navConsts;
 
     return (
       <main className="App-container">
@@ -17,6 +18,7 @@ export default class Main extends Component {
           <Route exact path={'/' + FIND} component={FindContainer} />
           <Route exact path={'/' + POST} component={PostContainer} />
           <Route exact path={'/' + ACCOUNT} component={AccountContainer} />
+          <Route exact path={'/' + MAP} component={MapContainer} />
         </Switch>
       </main>
     );
