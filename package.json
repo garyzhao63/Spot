@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.5.4",
     "@babel/core": "^7.1.2",
     "@babel/runtime": "^7.1.2",
     "babel-loader": "^8.0.4",

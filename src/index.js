@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import App from './components/App';
+import * as Firebase from './server/Firebase';
+
 import * as serviceWorker from './serviceWorker';
 import './css/index.css';
 import 'semantic-ui-css/semantic.min.css';
