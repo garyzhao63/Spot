@@ -18,7 +18,7 @@ class App extends Component {
             className="App-link"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={db.addListing}
+            onClick={db.addListing("some shit")}
           >
             Learn React
           </a>
