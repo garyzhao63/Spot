@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from '../logo.svg';
 import * as db from '../server/api';
 
 export default class Home extends Component {
-  state = {};
-
   render() {
     return (
       <div>

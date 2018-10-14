@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Icon} from 'semantic-ui-react';
 
 export default class AccountContainer extends Component {
-  state = {};
-
   render() {
     return (
       <div>

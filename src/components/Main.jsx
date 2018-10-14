@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Home from './Home';
+import {navConsts} from '../constants';
 import FindContainer from './FindContainer';
 import PostContainer from './PostContainer';
 import AccountContainer from './AccountContainer';
 
 export default class Main extends Component {
-  state = {};
-
   render() {
+    const {ACCOUNT, FIND, POST} = navConsts;
+
     return (
       <main className="App-container">
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/find' component={FindContainer} />
-          <Route exact path='/post' component={PostContainer} />
-          <Route exact path='/account' component={AccountContainer} />
+          <Route exact path={'/' + FIND} component={FindContainer} />
+          <Route exact path={'/' + POST} component={PostContainer} />
+          <Route exact path={'/' + ACCOUNT} component={AccountContainer} />
         </Switch>
       </main>
     );
   }
+  
 }
