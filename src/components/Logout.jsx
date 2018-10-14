@@ -12,7 +12,6 @@ export class LogoutButton extends Component {
           color='google plus'
           onClick={logout}
         >
-          <Icon name='google' />
           Log Out
         </Button>
       </div>

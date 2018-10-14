@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Icon, Menu} from 'semantic-ui-react';
+import {Icon, Menu} from 'semantic-ui-react';
 import {createBrowserHistory} from 'history';
 import {navConsts} from '../constants';
 import {LoginButton} from './Login';

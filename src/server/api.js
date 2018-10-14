@@ -4,7 +4,7 @@ const listingRef = db.collection("Listing");
 const userRef = db.collection("Users");
 
 export function isUserLoggedIn() {
-    return !!auth.user;
+    return !!auth.currentUser;
 }
 
 export function login() {
