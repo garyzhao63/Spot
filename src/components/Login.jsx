@@ -5,19 +5,17 @@ import {login} from '../server/api';
 export class LoginButton extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className='Login'>
         <Button
-          size='small'
-          compact
           icon
           labelPosition='left'
           color='google plus'
           onClick={login}
         >
           <Icon name='google' />
-          Log In with Google
-                </Button>
-      </React.Fragment>
+          Log In
+        </Button>
+      </div>
     );
   }
 }

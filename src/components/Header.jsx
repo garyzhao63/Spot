@@ -38,11 +38,7 @@ export default class Header extends Component {
               onClick={this.handleItemClick}
             />
           </Link>
-          <Menu.Item>
-            <LoginButton
-              onClick={this.handleItemClick}
-            />
-          </Menu.Item>
+          <LoginButton />
         </Menu>
       </div>
     );
