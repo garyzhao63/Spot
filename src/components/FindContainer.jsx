@@ -6,7 +6,7 @@ export default class FindContainer extends Component {
 
   render() {
     return (
-      <header className="App-header">
+      <header className="App-container">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>
           Find a parking spot!
