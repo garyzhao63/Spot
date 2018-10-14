@@ -74,7 +74,7 @@ export function setOwnerID(name, data, callback) {
 
 /*************** Listing Getters **********/
 
-export function getAllListing(callback) {
+export function getAllListings(callback) {
     listingRef.get()
         .then(function(querySnapshot) {
             querySnapshot.forEach(function(listing) {

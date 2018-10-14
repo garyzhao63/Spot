@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Container, Icon, Input, Label} from 'semantic-ui-react';
+import {Segment, Container, Form, Icon, Input, Label} from 'semantic-ui-react';
 import * as api from '../server/api';
 import {firebase} from '../server/Firebase';
 
@@ -7,8 +7,9 @@ export default class PostContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: '',
+      title: '',
       price: '',
+      description: '',
       latitude: null,
       longitude: null,
     }
@@ -45,19 +46,20 @@ export default class PostContainer extends Component {
   }
 
   handleSubmit = () => {
-    const {price, latitude, longitude} = this.state;
+    const {title, price, description, latitude, longitude} = this.state;
     let location = null;
     if (latitude && longitude) {
       location = new firebase.firestore.GeoPoint(latitude, longitude);
     }
 
-    api.addListing(this.state.description, {price, location}, (error) => {
+    api.addListing(this.state.title, {title, price, description, location, latitude, longitude}, (error) => {
       if (error) {
         alert(error);
       } else {
         this.setState({
-          description: '',
+          title: '',
           price: '',
+          description: '',
           latitude: null,
           longitude: null,
         })
@@ -75,27 +77,36 @@ export default class PostContainer extends Component {
 
         {this.getLocation()}
 
-        <Input
-          fluid
-          label='Description'
-          placeholder='Spot in garage at La Scala'
-          onChange={(e, data) => this.setState({description: data.value})}
-          value={this.state.description}
-        />
-        <Input
-          label='Price'
-          icon
-          iconPosition='left'
-          placeholder='50'
-          onChange={(e, data) => this.setState({price: data.value})}
-          value={this.state.price}
-        >
-          <Label>$</Label>
-          <input />
-        </Input>
-        <Button positive onClick={this.handleSubmit}>
-          Post
-        </Button>
+        <Segment inverted>
+        <Form inverted onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Input
+              required
+              label='Title'
+              placeholder='Spot in garage at La Scala'
+              onChange={(e, data) => this.setState({title: data.value})}
+              value={this.state.title}
+              width='5'
+            />
+            <Form.Input
+              required
+              label='Price'
+              placeholder='50'
+              onChange={(e, data) => this.setState({price: data.value})}
+              value={this.state.price}
+              width='1'
+            />
+          </Form.Group>
+          <Form.TextArea
+            required
+            label='Description'
+            placeholder='Describe the spot.'
+            onChange={(e, data) => this.setState({description: data.value})}
+            value={this.state.description}
+          />
+          <Form.Button content='Submit' />
+        </Form>
+        </Segment>
 
       </Container>
     );
