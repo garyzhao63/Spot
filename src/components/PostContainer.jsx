@@ -68,18 +68,31 @@ export default class PostContainer extends Component {
           location = new firebase.firestore.GeoPoint(latitude, longitude);
         }
 
-        api.addListing(this.state.title, {title, price, description, location, latitude, longitude, email, userName: displayName}, (error) => {
-          if (error) {
-            alert(error);
-          } else {
-            this.setState({
-              title: '',
-              price: '',
-              description: '',
-              latitude: null,
-              longitude: null,
-            });
-          }
+        api.addListing(
+          this.state.title,
+          {
+            title,
+            price,
+            description,
+            location,
+            latitude,
+            longitude,
+            email,
+            userName: displayName,
+            date: new Date(),
+          },
+          (error) => {
+            if (error) {
+              alert(error);
+            } else {
+              this.setState({
+                title: '',
+                price: '',
+                description: '',
+                latitude: null,
+                longitude: null,
+              });
+            }
         });
       } else {
         // User is signed out.
