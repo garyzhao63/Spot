@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
-
-const FIND = 'find';
-const POST = 'post';
-const ACCOUNT = 'account';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import {Menu} from 'semantic-ui-react';
+import {Icon} from 'semantic-ui-react';
+import {createBrowserHistory} from 'history';
+import {navConsts} from '../constants';
 
 export default class Header extends Component {
-  state = {};
-
-  handleItemClick = (e, { name }) => {this.setState({ activeItem: name })};
-
   render() {
-    const { activeItem } = this.state;
+    const {ACCOUNT, FIND, POST} = navConsts;
+    const activeItem = createBrowserHistory().location.pathname.replace('/', '');
 
     return (
       <div className="App-header">
         <Menu >
           <Link to='/'>
-            <Menu.Item header>Spot</Menu.Item>
+            <Menu.Item header><Icon name='car' /> Spot</Menu.Item>
           </Link>
-          <Link to='/find'>
+          <Link to={'/' + FIND}>
             <Menu.Item
               name={FIND}
               active={activeItem === FIND}
               onClick={this.handleItemClick}
             />
           </Link>
-          <Link to='/post'>
+          <Link to={'/' + POST}>
             <Menu.Item
               name={POST}
               active={activeItem === POST}
               onClick={this.handleItemClick}
             />
           </Link>
-          <Link to='/account'>
+          <Link to={'/' + ACCOUNT}>
             <Menu.Item
               name={ACCOUNT}
               active={activeItem === ACCOUNT}

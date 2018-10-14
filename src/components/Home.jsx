@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from '../logo.svg';
 
 export default class Home extends Component {
-  state = {};
-
   render() {
     return (
       <div>

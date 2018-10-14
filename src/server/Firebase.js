@@ -23,6 +23,6 @@ export function test() {
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
- 
- 
+
+
 export default database;
