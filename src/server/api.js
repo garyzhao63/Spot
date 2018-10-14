@@ -38,7 +38,7 @@ function createUser(user, email, callback) {
 }
 
 function cleanData(user) {
-    // Return json object contain 
+    // Return json object contain
     var data = {
         name: user.displayName,
         phone_number: user.phoneNumber,
