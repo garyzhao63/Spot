@@ -1,7 +1,7 @@
 import {db, auth, provider} from './Firebase';
 
 const listingRef = db.collection("Listing");
-const userRef = db.collection("User");
+const userRef = db.collection("Users");
 
 export function login() {
     auth.signInWithPopup(provider).then(function (result) {
@@ -9,8 +9,11 @@ export function login() {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        // ...
-        console.log(user.email);
+
+        //console.log("current user: " + auth.currentUser.displayName);
+
+        createUser(user, user.email);
+
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -22,6 +25,21 @@ export function login() {
         // ...
         alert(errorMessage);
     });
+}
+
+/************** User Utils ************/
+function createUser(user, email, callback) {
+    var userData = cleanData(user);
+    userRef.doc(email.toLowerCase()).set(userData);
+}
+
+function cleanData(user) {
+    // Return json object contain 
+    var data = {
+        name: user.displayName,
+        phone_number: user.phoneNumber,
+    }
+    return data;
 }
 
 /************** Listing Utils ************/
