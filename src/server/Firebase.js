@@ -11,14 +11,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-    // Get a reference to the database service
-export const database = firebase.database();
-
-export function test() {
-    //console.log("hello");
-    //console.log(database.ref().push({location: "123"}));
-}
-
 export const auth = firebase.auth();
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const db = firebase.firestore();

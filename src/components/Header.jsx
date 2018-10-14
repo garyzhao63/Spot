@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Menu} from 'semantic-ui-react';
-import {Icon} from 'semantic-ui-react';
+import {Button, Icon, Menu} from 'semantic-ui-react';
 import {createBrowserHistory} from 'history';
 import {navConsts} from '../constants';
 import {LoginButton} from './Login';
+import {isUserLoggedIn} from '../server/api';
 
 export default class Header extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class Header extends Component {
       <div className="App-header">
         <Menu >
           <Link to='/'>
-            <Menu.Item header><Icon name='car' /> Spot</Menu.Item>
+            <Menu.Item header><Icon name='car' />Spot</Menu.Item>
           </Link>
           <Link to={'/' + FIND}>
             <Menu.Item
@@ -38,7 +38,7 @@ export default class Header extends Component {
               onClick={this.handleItemClick}
             />
           </Link>
-          <LoginButton />
+          {isUserLoggedIn() ? <LoginButton /> : <Button className='login-button' content='Log out' />}
         </Menu>
       </div>
     );

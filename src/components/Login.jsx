@@ -5,7 +5,7 @@ import {login} from '../server/api';
 export class LoginButton extends Component {
   render() {
     return (
-      <div className='Login'>
+      <div className='login-button'>
         <Button
           icon
           labelPosition='left'

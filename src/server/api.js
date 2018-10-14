@@ -3,6 +3,10 @@ import {db, auth, provider} from './Firebase';
 const listingRef = db.collection("Listing");
 const userRef = db.collection("User");
 
+export function isUserLoggedIn() {
+    return true;
+}
+
 export function login() {
     auth.signInWithPopup(provider).then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
