@@ -31,6 +31,10 @@ export function login() {
     });
 }
 
+export function logout() {
+    auth.signOut();
+}
+
 /************** User Utils ************/
 function createUser(user, email, callback) {
     var userData = cleanData(user);
