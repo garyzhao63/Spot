@@ -1,52 +1,39 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
-
-import CurrentLocation from './Map';
-
-export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
+import GoogleMapReact from 'google-map-react';
+import marker from '../marker.png';
+ 
+const AnyReactComponent = ({ text }) => <div><img src={marker} width='20' />{text}</div>;
+ 
+class MapContainer extends Component {
+  static defaultProps = {
+    center: {
+      lat: 32.8801,
+      lng: -117.2340
+    },
+    zoom: 11
   };
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
+ 
   render() {
     return (
-      <CurrentLocation
-        centerAroundCurrentLocation
-        google={this.props.google}
-      >
-        <Marker onClick={this.onMarkerClick} name={'current location'} />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+      // Important! Always set the container height explicitly
+      <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyB76P1B4Bv1YhfQtiSqXI1BNhNJd2ZqrF4'}}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
         >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-      </CurrentLocation>
+          <AnyReactComponent
+            lat={32.8801}
+            lng={-117.2340}
+          />
+
+          <AnyReactComponent
+            lat={32.8709}
+            lng={-117.2108}
+          />
+        </GoogleMapReact>
+      </div>
     );
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyB76P1B4Bv1YhfQtiSqXI1BNhNJd2ZqrF4'
-})(MapContainer);
+export default MapContainer;

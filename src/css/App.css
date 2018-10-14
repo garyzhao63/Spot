@@ -50,6 +50,17 @@
   transform: translateY(-50%);
 }
 
+.map-container {
+  background-color: #282c34;
+  height: auto;
+  width: auto;
+  min-height: 95vh;
+  max-width: 200vh;
+  display: flex;
+  color: white;
+  margin: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
