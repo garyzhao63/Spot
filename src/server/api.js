@@ -1,5 +1,8 @@
 import {db, auth, provider} from './Firebase';
 
+const listingRef = db.collection("Listing");
+const userRef = db.collection("User");
+
 export function login() {
     auth.signInWithPopup(provider).then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -20,9 +23,6 @@ export function login() {
         alert(errorMessage);
     });
 }
-
-const listingRef = db.collection("Listing");
-const userRef = db.collection("User");
 
 /************** Listing Utils ************/
 
@@ -114,12 +114,12 @@ export function getPicture(name, callback) {
 
 export function getHistory(name, callback) {
     userRef.doc(name).get()
-        .then((listing) => callback(user.data().history, null))
+        .then((listing) => callback(userRef.data().history, null))
         .catch((error) => callback(null, error));
 }
 
 export function getEmail(name, callback) {
     userRef.doc(name).get()
-        .then((listing) => callback(user.data().email, null))
+        .then((listing) => callback(userRef.data().email, null))
         .catch((error) => callback(null, error));
 }
