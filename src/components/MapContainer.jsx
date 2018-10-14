@@ -7,6 +7,13 @@ const AnyReactComponent = ({ text }) => <div><img src={marker} width='20' />{tex
  
 class MapContainer extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      listings: []
+    };
+  }
+
   static defaultProps = {
     center: {
       lat: 32.8801,
@@ -15,14 +22,17 @@ class MapContainer extends Component {
     zoom: 11
   };
 
-  componentDidMount() {
+    componentDidMount() {
     api.getAllListings((listingData, error) => {
       if (error) {
         alert(error);
         return;
       }
-      console.log(listingData);
-    })
+
+      this.setState((prevState, curProps) => {
+        return {listings: [...prevState.listings, listingData]}
+      });
+    });
   }
 
  
@@ -38,15 +48,15 @@ class MapContainer extends Component {
         >
 
 
-          <AnyReactComponent
-            lat={32.8801}
-            lng={-117.2340}
-          />
+          {this.state.listings.map((listing) => (
+            <AnyReactComponent
+              lat={listing.latitude}
+              lng={listing.longitude}
+              onClick={() => alert('hello')}
+            />
+          ))}
 
-          <AnyReactComponent
-            lat={32.8709}
-            lng={-117.2108}
-          />
+
         </GoogleMapReact>
       </div>
     );
