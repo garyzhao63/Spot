@@ -15,7 +15,7 @@ var firebase = require("firebase");
     // Get a reference to the database service
 const database = firebase.database();
 
-export function addListing() {
+export function test() {
     //console.log("hello");
     //console.log(database.ref().push({location: "123"}));
 }
