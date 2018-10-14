@@ -19,7 +19,6 @@ export default class FindContainer extends Component {
         return;
       }
 
-      console.log(listingData)
       this.setState((prevState, curProps) => {
         return {listings: [...prevState.listings, listingData]}
       });

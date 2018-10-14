@@ -31,6 +31,13 @@ export default class Header extends Component {
               onClick={this.handleItemClick}
             />
           </Link>
+          <Link to={'/' + MAP}>
+            <Menu.Item
+              name={MAP}
+              active={activeItem === MAP}
+              onClick={this.handleItemClick}
+            />
+          </Link>
           <Link to={'/' + ACCOUNT}>
             <Menu.Item
               name={ACCOUNT}
