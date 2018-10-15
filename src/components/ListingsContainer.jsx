@@ -5,7 +5,10 @@ import * as networking from '../networking';
 
 export default class ListingsContainer extends Component {
   requestButton = (listing) => (
-    <Button primary floated='right' onClick={() => networking.requestDocuSign(listing.email, listing.userName, listing.title, (response, error) => {})}>
+    <Button primary floated='right' onClick={() => {
+        alert('Request sent!');
+        networking.requestDocuSign(listing.email, listing.userName, listing.title, (response, error) => {});
+      }}>
       Request
           <Icon name='right chevron' />
     </Button>

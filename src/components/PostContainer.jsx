@@ -94,6 +94,7 @@ export default class PostContainer extends Component {
               });
             }
         });
+        alert("Submitted!")
       } else {
         // User is signed out.
         // ...
